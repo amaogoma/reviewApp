@@ -11,6 +11,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const favicon = require('serve-favicon');
+const dotenv = require('dotenv').config();
 
 const { isLoggedIn } = require('./utils/isLoggedIn');
 const getAllReviews = require('./utils/getReviews');
@@ -18,7 +19,7 @@ const getAllReviews = require('./utils/getReviews');
 
 const Review = require('./models/Review');
 
-mongoose.connect('mongodb://localhost:27017/reviewApp')
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('MongoDBコネクションOK！');
   })
