@@ -1,0 +1,32 @@
+<%- include('../partials/head', { title: '本日の学習内容一覧' }) %>
+
+  <body>
+    <%- include('../partials/navbar') %>
+      <main>
+        <div class="container">
+          <h1 class="my-5">本日の学習内容一覧</h1>
+          <%- include('../partials/flash') %>
+            <div class="row">
+              <% for(let todayReview of todayReviews) { %>
+                <div class="col-12 col-md-6 mb-3">カテゴリ：<%= todayReview.category %>
+                    <div>
+                        Q：<%= todayReview.question %>
+                        <br>
+                        A： <%= todayReview.answer %>
+                    </div>
+                    <div class="d-flex column-gap-3 mt-2">
+                      <a href="/products/<%= todayReview.id %>/edit">編集</a>
+                      <form action="/products/<%= todayReview._id %>?_method=DELETE" method="post">
+                        <button >削除</button>
+                      </form>
+                    </div>                    
+                </div>
+                <% } %>
+            </div>
+            <a href="/products/new">新しく登録する</a>
+        </div>
+      </main>
+      <%- include('../partials/footer') %>
+  </body>
+
+  </html>

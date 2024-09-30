@@ -1,0 +1,32 @@
+<%- include('../partials/head', { title: '1か月の学習記録'}) %>
+
+<body>
+  <%- include('../partials/navbar') %>
+  <main>
+    <div class="container">
+      <h1 class="my-5">1か月の学習記録</h1>
+      <form action="/products/selectedDay" class="form-label" method="POST">
+        <label for="date">日付を選択:</label>
+        <input type="date" id="date" name="date" class="form-control">
+        <button type="submit" class="btn btn-outline-info mt-3">確認</button>
+      </form>
+      <% if (typeof reviewsForSelectedDay === 'undefined' || reviewsForSelectedDay.length === 0) { %>
+        <p>日付が選択されていないか、データがありません。</p>
+      <% } else { %>
+        <h2><%= selectedDate %>の学習記録</h2>
+        <div class="row" >
+          <% for (let review of reviewsForSelectedDay) { %>
+            <div class="col-12 col-md-6 mb-3">
+              <strong>カテゴリ:</strong> <%= review.category %><br>
+              <strong>質問:</strong> <%= review.question %><br>
+              <strong>答え:</strong> <%= review.answer %>
+            </div>
+          <% } %>
+          </div>  
+      <% } %>
+    </div>
+ 
+</main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

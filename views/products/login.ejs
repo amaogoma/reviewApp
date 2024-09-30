@@ -1,0 +1,24 @@
+<%- include('../partials/head', { title: 'ログイン' }) %>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+  <div class="container">
+    <h1 class="my-5">ログイン</h1>
+    <form action="/products/login" method="post" class="mb-3">
+      <div class="mb-3">
+        <label for="username" class="form-label">ユーザーネーム</label>
+        <input type="text" name="username" id="username" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">パスワード</label>
+        <input type="password" name="password" id="password" class="form-control" required>
+      </div>  
+      <button class="btn btn-outline-info mt-3" style="--bs-btn-padding-x: 3rem">ログイン</button>
+    </form>
+    <a href="/products/register">初めての方はこちらからユーザー登録してください</a>
+  </div>
+  
+
+  <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<%- include('../partials/head', { title: 'エラー' }) %>
+<div class="row">
+  <div class="offset-3 col-6">
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading text-center">エラー</h4>
+      <p><%= err.message %></p>
+      <p><%= err.stack %></p>
+    </div>
+  </div>
+</div>

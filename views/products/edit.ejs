@@ -1,0 +1,27 @@
+<%- include('../partials/head', { title: '編集' }) %>
+
+<body>
+  <%- include('../partials/navbar') %>
+  <main>
+    <div class="container">
+      <h1  class="my-5">編集</h1>
+      <form action="/products/<%= review._id %>?_method=PUT" method="POST">
+        <label for="category" class="form-label">カテゴリー</label>
+        <input type="text" id="category" name="category"class="form-control form-control-lg"  value="<%= review.category %>" required>
+        <br><br>
+    
+        <label for="question" class="form-label">質問</label>
+        <textarea name="question" id="question" class="form-control form-control-lg" style="height: 10rem" required><%= review.question %></textarea>
+        <br>
+    
+        <label for="answer" class="form-label">答え</label>
+        <textarea name="answer" id="answer" class="form-control form-control-lg" style="height: 10rem" required><%= review.answer %></textarea>
+        <br>
+        
+        <button type="submit" class="btn btn-outline-info " style="--bs-btn-padding-x: 3rem">編集する</button>
+      </form>
+    </div>
+</main>
+  <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<%- include('../partials/head', { title: 'ユーザー登録' }) %>
+<body>
+  <%- include('../partials/navbar') %>
+    <div class="container">
+      <h1  class="my-5">ユーザー登録</h1>
+      <form action="/products/register" method="post">
+        <div class="mb-3">
+          <label for="username" class="form-label">ユーザーネーム</label>
+          <input type="text" name="username" id="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">パスワード</label>
+          <input type="password" name="password" id="password" class="form-control" required>
+        </div>  
+        <button class="btn btn-outline-info mt-3" style="--bs-btn-padding-x: 3rem">登録する</button>
+      </form>
+    </div>
+  
+  <%- include('../partials/footer') %>
+
+</body>
+</html>
