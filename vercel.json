@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "reviewApp/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)", 
+      "dest": "/reviewApp/index.js"
+    }
+  ],
+  "functions": {
+    "reviewApp/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
