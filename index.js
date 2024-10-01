@@ -12,7 +12,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const favicon = require('serve-favicon');
 const dotenv = require('dotenv').config();
-const connect = require('connect-mongo');
+const MongoStore = require('connect-mongo');
 
 const { isLoggedIn } = require('./utils/isLoggedIn');
 const getAllReviews = require('./utils/getReviews');
