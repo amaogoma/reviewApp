@@ -19,7 +19,7 @@ const getAllReviews = require('./utils/getReviews');
 
 const Review = require('./models/Review');
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('MongoDBコネクションOK！');
   })
@@ -234,6 +234,4 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render('products/error', { err });
 })
 
-app.listen(3000, () => {
-  console.log('ポート3000をリクエスト');
-});
+module.exports = app;
