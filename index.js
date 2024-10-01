@@ -12,6 +12,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const favicon = require('serve-favicon');
 const dotenv = require('dotenv').config();
+const connect = require('connect-mongo');
 
 const { isLoggedIn } = require('./utils/isLoggedIn');
 const getAllReviews = require('./utils/getReviews');
@@ -25,7 +26,7 @@ mongoose.connect(process.env.MONGODB_URI)
   })
   .catch(err => {
     console.log('MongoDBコネクションエラー！！！');
-    console.log(err);
+    console.log(err.message);
   });
 
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +41,11 @@ const sessionConfig = {
   secret: 'mysecret',
   resave: false,
   saveUninitialized: true,
-  Cookie: {
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+    collectionName: 'sessions', // セッションのコレクション名
+  }),
+  cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 7
   }
