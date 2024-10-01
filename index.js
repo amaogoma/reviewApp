@@ -232,6 +232,9 @@ app.all('*', (req, res, next) => {
 })
 
 app.use((err, req, res, next) => {
+  console.error(`Error message: ${err.message}`); // エラーメッセージを表示
+  console.error(err); 
+  
   const { statusCode = 500 } = err
   if(!err.message) {
     err.message = '問題が起きました'
