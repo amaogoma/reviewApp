@@ -44,7 +44,7 @@ const sessionConfig = {
   store: MongoStore.create({
     mongoUrl: process.env.MONGODB_URI,
     collectionName: 'sessions', // セッションのコレクション名
-  }),
+  }),  
   cookie: {
     httpOnly: true,
     maxAge: 1000 * 60 * 60 * 24 * 7
