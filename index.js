@@ -115,9 +115,9 @@ app.get('/products/logout', (req, res, next) => {
 app.get('/products',isLoggedIn, catchAsync(async (req, res) => {
     const reviews = await getAllReviews(req.user._id); 
     res.render('products', {
-      reviews1DayAgo: reviews.reviews1DayAgo,
-      reviews7DaysAgo: reviews.reviews7DaysAgo,
-      reviews30DaysAgo: reviews.reviews30DaysAgo,
+      reviews1DayAgo: reviews.reviews1DayAgo || [], 
+      reviews7DaysAgo: reviews.reviews7DaysAgo || [],
+      reviews30DaysAgo: reviews.reviews30DaysAgo || []
     }); 
 }));
 
