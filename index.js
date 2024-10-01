@@ -113,8 +113,12 @@ app.get('/products/logout', (req, res, next) => {
    ホーム画面 */
 /* 本日の復習内容 */
 app.get('/products',isLoggedIn, catchAsync(async (req, res) => {
-    const reviews = await getAllReviews(req.user._id); // レビューを取得
-    res.render('products', reviews); // レビューをテンプレートに渡す
+    const reviews = await getAllReviews(req.user._id); 
+    res.render('products', {
+      reviews1DayAgo: reviews.reviews1DayAgo,
+      reviews7DaysAgo: reviews.reviews7DaysAgo,
+      reviews30DaysAgo: reviews.reviews30DaysAgo,
+    }); 
 }));
 
 /* ---------------------------------
