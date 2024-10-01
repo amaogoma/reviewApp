@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('products/index'); // views/products/index.ejs をレンダリング
+  res.render('products/login'); // views/products/index.ejs をレンダリング
 });
 
 /* ユーザー登録 */
