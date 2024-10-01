@@ -114,6 +114,7 @@ app.get('/products/logout', (req, res, next) => {
 /* 本日の復習内容 */
 app.get('/products',isLoggedIn, catchAsync(async (req, res) => {
     const reviews = await getAllReviews(req.user._id); 
+    console.log(reviews);
     res.render('products', {
       reviews1DayAgo: reviews.reviews1DayAgo || [], 
       reviews7DaysAgo: reviews.reviews7DaysAgo || [],
