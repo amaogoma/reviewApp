@@ -14,9 +14,9 @@
         <p>日付が選択されていないか、データがありません。</p>
       <% } else { %>
         <h2><%= selectedDate %>の学習記録</h2>
-        <div class="row"  style="white-space: pre-wrap;">
+        <div class="row">
           <% for (let review of reviewsForSelectedDay) { %>
-            <div class="col-12 col-md-6 mb-3">
+            <div class="col-12 col-md-6 mb-3"  style="white-space: pre-wrap;">
               <strong>カテゴリ:</strong> <%= review.category %><br>
               <strong>質問:</strong> <%= review.question %><br>
               <strong>答え:</strong> <%= review.answer %>
