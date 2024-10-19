@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.render('products/login'); // views/products/index.ejs をレンダリング
+  res.render('products/login'); 
 });
 
 /* ユーザー登録 */
@@ -123,6 +123,7 @@ app.get('/products',isLoggedIn, catchAsync(async (req, res) => {
 app.delete('/products/remembered/:id', catchAsync(async (req, res) => {
   const { id } = req.params;
   await Review.findByIdAndDelete(id);
+  req.flash('success', '覚えられました！！');
   res.redirect('/products');
 }));
 
@@ -131,6 +132,7 @@ app.put('/products/notRemembered/:id', catchAsync(async (req, res) => {
   const { id } = req.params;
 
   await Review.findByIdAndUpdate(id, { time: new Date() });
+  req.flash('error', 'もう一回頑張りましょう');
   res.redirect('/products');
 
 }));
@@ -231,6 +233,7 @@ app.delete('/products/:id', catchAsync(async (req, res) => {
 }));
 
 
+/* エラー処理 */
 app.all('*', (req, res, next) => {
   next(new AppError('ページが見つかりませんでした。', 404));
 })
