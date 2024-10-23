@@ -11,9 +11,6 @@ const getReviewsForDaysAgo = async (daysAgo, userId) => {
   const endDate = new Date(startDate);
   endDate.setHours(23, 59, 59, 999);
 
-  console.log('Start Date:', startDate); // 日付範囲の開始日を確認
-  console.log('End Date:', endDate);     // 日付範囲の終了日を確認
-
   return await Review.find({
     time: { $gte: startDate, $lte: endDate },
     user: userId
@@ -27,6 +24,9 @@ const getAllReviews = async (userId) => {
   reviews['reviews1DayAgo'] = await getReviewsForDaysAgo(1, userId);
   reviews['reviews7DaysAgo'] = await getReviewsForDaysAgo(7, userId);
   reviews['reviews30DaysAgo'] = await getReviewsForDaysAgo(30, userId);
+
+  console.log('Start Date:', startDate);
+  console.log('End Date:', endDate);
 
   return reviews;
 };
