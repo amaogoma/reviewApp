@@ -25,9 +25,6 @@ const getAllReviews = async (userId) => {
   reviews['reviews7DaysAgo'] = await getReviewsForDaysAgo(7, userId);
   reviews['reviews30DaysAgo'] = await getReviewsForDaysAgo(30, userId);
 
-  console.log('Start Date:', startDate);
-  console.log('End Date:', endDate);
-
   return reviews;
 };
 

@@ -17,9 +17,6 @@ const MongoStore = require('connect-mongo');
 const { isLoggedIn } = require('./utils/isLoggedIn');
 const getAllReviews = require('./utils/getReviews');
 
-console.log('Start Date:', startDate);
-console.log('End Date:', endDate);
-
 const Review = require('./models/Review');
 
 mongoose.connect(process.env.MONGODB_URI)
