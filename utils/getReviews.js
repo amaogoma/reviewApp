@@ -5,11 +5,11 @@ const getReviewsForDaysAgo = async (daysAgo, userId) => {
   /* 日付を取ってきて、1日の最初と最後の時間を設定 */
   const now = new Date();
   const startDate = new Date(now);
-  startDate.setDate(now.getDate() - daysAgo);
-  startDate.setHours(0, 0, 0, 0);
+  startDate.setUTCDate(now.getUTCDate() - daysAgo);
+  startDate.setUTCHours(0, 0, 0, 0);
 
   const endDate = new Date(startDate);
-  endDate.setHours(23, 59, 59, 999);
+  endDate.setUTCHours(23, 59, 59, 999);
 
   return await Review.find({
     time: { $gte: startDate, $lte: endDate },
