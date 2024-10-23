@@ -17,9 +17,9 @@
         <div class="row">
           <% for (let review of reviewsForSelectedDay) { %>
             <div class="col-12 col-md-6 mb-3"  style="white-space: pre-wrap;">
-              <strong>カテゴリ:</strong> <%= review.category %><br>
-              <strong>質問:</strong> <%= review.question %><br>
-              <strong>答え:</strong> <%- review.answer %>
+              <p><strong>カテゴリ:</strong> <%= review.category %></p>
+              <p><strong>質問:</strong> <%= review.question %></p>
+              <p><strong>答え:</strong> <%= review.answer %></p>
             </div>
           <% } %>
           </div>  
